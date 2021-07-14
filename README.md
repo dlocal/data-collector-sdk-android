@@ -8,7 +8,7 @@ Supports API versions from 21 (Android 5.0) and higher.
 
 Add mavenCentral() to the project level build.gradle file’s repositories section:
 
-```gradle
+```groovy
 repositories {
   mavenCentral()
   ...
@@ -17,7 +17,7 @@ repositories {
 
 Add DataCollector SDK dependency to the application’s build.gradle file:
 
-```gradle
+```groovy
 dependencies {
   ...
   implementation 'com.dlocal.android:data-collector:1.0.0'
