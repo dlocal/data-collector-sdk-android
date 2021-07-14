@@ -24,3 +24,28 @@ dependencies {
   ...
 }
 ```
+
+## Application Integration
+
+Create an Application file if you haven’t already and initialize the sdk calling setUp method and passing your API key:
+
+```kotlin
+class MainApplication : Application() {
+
+    override fun onCreate() {
+        super.onCreate()
+        // Setup for DLocal Data Collector SDK
+        DLCollector.setUp(this, DLSettings("YOUR_API_KEY"))
+    }
+}
+```
+
+Optionally you can configure the environment and the desired log level in the attributes of the DLSettings object:
+
+```kotlin
+DLSettings(
+  apiKey = "test_api_key",
+  environment = DLEnvironment.SANDBOX,
+  logLevel = DLLogLevel.VERBOSE
+)
+```
