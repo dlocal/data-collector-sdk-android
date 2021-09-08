@@ -9,8 +9,10 @@ identify devices.
 1. [ App permissions ](#markdown-header-app-permissions)
 3. [ Installation ](#markdown-header-installation)
 4. [ How to use ](#markdown-header-how-to-use)
-5. [ Switching environments ](#markdown-header-switching-environments)
+5. [ Testing the integration ](#markdown-header-testing-the-integration)
+    - [ Switching environments ](#markdown-header-switching-environments)
 7. [ Java Example ](#markdown-header-java-example)
+8. [ Sample App ](#markdown-header-sample-app)
 8. [ Report Issues ](#markdown-header-report-issues)
 9. [ License ](#markdown-header-license)
 
@@ -29,7 +31,7 @@ android.permission.ACCESS_NETWORK_STATE (Optional)
 
 ## Installation
 
-New releases of the DataCollector Android SDK are published via [Maven Repository](https://repo1.maven.org/maven2/com/dlocal/android/data-collector/). 
+New releases of the DataCollector Android SDK are published via [Maven Repository](https://repo1.maven.org/maven2/com/dlocal/android/data-collector/).
 The latest version is available via `mavenCentral()`.
 
 Add `mavenCentral()` to the project level `build.gradle` file's repositories section:
@@ -47,7 +49,7 @@ Add DataCollector SDK dependency to the application's `build.gradle` file:
 
 dependencies {
     ...
-    implementation 'com.dlocal.android:data-collector:0.0.2'
+    implementation 'com.dlocal.android:data-collector:0.0.3'
     ...
 }
 
@@ -65,7 +67,7 @@ class MainApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         // Setup for DLocal Data Collector SDK
-        DLCollector.setUp(this, DLSettings("YOUR_API_KEY"))
+        DLCollector.setUp(this, DLSettings("API KEY"))
     }
 }
 ```
@@ -79,7 +81,7 @@ class MainApplication : Application() {
         super.onCreate()
 
         val settings = DLSettings(
-            apiKey = "YOUR_API_KEY",
+            apiKey = "API KEY",
             environment = DLEnvironment.SANDBOX,
             logLevel = DLLogLevel.VERBOSE
         )
@@ -87,9 +89,9 @@ class MainApplication : Application() {
     }
 }
 ```
-Replacing `apiKey` with your key. 
+Replacing `apiKey` with your key.
 
-See the [SampleApplication](https://bitbucket.org/dlocal-public/data-collector-sdk-android/src/master/public/app/src/main/java/com/dlocal/sampleapp/SampleApplication.kt) for a detailed example.
+See the [SampleApplication](https://bitbucket.org/dlocal-public/data-collector-sdk-android/src/master/app/src/main/java/com/dlocal/sampleapp/SampleApplication.kt) for a detailed example.
 
 ### 2) Start Session
 
@@ -101,16 +103,16 @@ This step can be done any time, but **it's recommended to call it as soon as a s
 DLCollector.getInstance().startSession()
 ```
 
-You can also associate additional data related to each session to improve the fraud prevention score. The following example shows how to pass the user's ID inside `DLAdditionalData` object.
+You can also associate additional data related to each session to improve the fraud prevention score. The following example shows how to pass the user reference ID inside `DLAdditionalData` object.
 
 ```kotlin
-val additionalData = DLAdditionalData(userId = "USER_ID")
+val additionalData = DLAdditionalData(userReference = "user-id")
 DLCollector.getInstance().startSession(additionalData)
 ```
 
 > NOTE: This method runs in a background thread and doesn't block the main thread.
 
-See the SampleApp [SampleActivity](https://bitbucket.org/dlocal-public/data-collector-sdk-android/src/master/public/app/src/main/java/com/dlocal/sampleapp/SampleActivity.kt) for a detailed example.
+See the SampleApp [SampleActivity](https://bitbucket.org/dlocal-public/data-collector-sdk-android/src/master/app/src/main/java/com/dlocal/sampleapp/SampleActivity.kt) for a detailed example.
 
 ### 3) Link the session to the transaction
 
@@ -120,11 +122,26 @@ When the user starts the checkout transaction, gather the session id like so:
 val sessionId: String? = DLCollector.getInstance().getSessionId()
 ```
 
-Send that id in the transaction as additional info. The method can return null if a session is not available or an error occurred.
+Submit this value in the payment request within the `additional_risk_data.device.event_uuid` parameter. The method can return null if a session is not available or an error occurred.
 
-## Switching environments
+## Testing the integration
 
-We strongly **recommend that you use the `SANDBOX` environment when testing**, and only use `PRODUCTION` in production ready builds. 
+Once integrated, you can use the `DLLogLevel.VERBOSE` log level to see if the SDK is working. This can be done by changing the setup settings like so:
+
+```kotlin
+val settings = DLSettings(apiKey = "SBX API KEY", environment = DLEnvironment.SANDBOX, logLevel = DLLogLevel.VERBOSE)
+```
+
+And looking at the console, when startSession is run, we should see the following logs if everything is working:
+
+```log
+I/DLDataCollector: Collected 57 data points in 646 milliseconds in SANDBOX
+I/DLDataCollector: POST success with sessionId 177eb063-bf2d-4247-8db2-66b87409419e in SANDBOX
+```
+
+### Switching environments
+
+We strongly **recommend that you use the `SANDBOX` environment when testing**, and only use `PRODUCTION` in production ready builds.
 
 To do so, you can use the setup and `DLCollectorSettings` to configure a different environment, i.e:
 
@@ -150,11 +167,15 @@ Replacing the `apiKey` with yours for each environment.
 
 You can use the SDK from Java due to the interoperability between Java and Kotlin, checkout the sample app's Java examples.
 
-- [Set up - JavaSampleApplication](https://bitbucket.org/dlocal-public/data-collector-sdk-android/src/master/public/app/src/main/java/com/dlocal/sampleapp/JavaSampleApplication.java)
+- [Set up - JavaSampleApplication](https://bitbucket.org/dlocal-public/data-collector-sdk-android/src/master/app/src/main/java/com/dlocal/sampleapp/JavaSampleApplication.java)
 
-- [Start session - JavaSampleActivity](https://bitbucket.org/dlocal-public/data-collector-sdk-android/src/master/public/app/src/main/java/com/dlocal/sampleapp/JavaSampleActivity.java#lines-34)
+- [Start session - JavaSampleActivity](https://bitbucket.org/dlocal-public/data-collector-sdk-android/src/master/app/src/main/java/com/dlocal/sampleapp/JavaSampleActivity.java#lines-34)
 
-- [Get session ID - JavaSampleActivity](https://bitbucket.org/dlocal-public/data-collector-sdk-android/src/master/public/app/src/main/java/com/dlocal/sampleapp/JavaSampleActivity.java#lines-39)
+- [Get session ID - JavaSampleActivity](https://bitbucket.org/dlocal-public/data-collector-sdk-android/src/master/app/src/main/java/com/dlocal/sampleapp/JavaSampleActivity.java#lines-39)
+
+## Sample App
+
+In this repository there's a [sample app](https://bitbucket.org/dlocal-public/data-collector-sdk-android/src/master/app/) to showcase how to use the SDK, please refer to the code for more detailed examples.
 
 ## Report Issues
 

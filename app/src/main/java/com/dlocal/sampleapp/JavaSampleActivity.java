@@ -7,6 +7,7 @@ import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.dlocal.datacollector.DLCollector;
+import com.dlocal.datacollector.api.DLAdditionalData;
 import com.dlocal.sampleapp.databinding.ActivityJavaSampleBinding;
 
 public class JavaSampleActivity extends AppCompatActivity {
@@ -32,7 +33,8 @@ public class JavaSampleActivity extends AppCompatActivity {
     }
 
     private void startSession() {
-        dlCollector.startSession();
+        DLAdditionalData additionalData = new DLAdditionalData("USER_REFERENCE_ID");
+        dlCollector.startSession(additionalData);
         binding.sessionIdText.setText(getString(R.string.session_started));
     }
 

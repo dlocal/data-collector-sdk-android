@@ -27,7 +27,7 @@ class SampleActivity : AppCompatActivity() {
     }
 
     private fun startSession() {
-        val additionalData = DLAdditionalData(userId = "USER_ID")
+        val additionalData = DLAdditionalData(userReference = "USER_REFERENCE_ID")
         dlCollector.startSession(additionalData)
         binding.sessionIdText.text = getString(R.string.session_started)
     }
