@@ -1,7 +1,7 @@
 # DataCollector Android SDK
 
 The DataCollector SDK collects and sends device information to improve fraud detection accuracy, and
-identify devices.
+identify devices. Lightweight library with only `134KB` AAR file size.
 
 ## Table of Contents
 
@@ -34,7 +34,7 @@ android.permission.ACCESS_NETWORK_STATE (Optional)
 New releases of the DataCollector Android SDK are published via [Maven Repository](https://repo1.maven.org/maven2/com/dlocal/android/data-collector/).
 The latest version is available via `mavenCentral()`.
 
-Add `mavenCentral()` to the project level `build.gradle` file's repositories section:
+Add `mavenCentral()` to the project level [build.gradle](https://bitbucket.org/dlocal-public/data-collector-sdk-android/src/master/build.gradle#lines-5) file's repositories section, if you don't have it already:
 ```groovy
 
 repositories {
@@ -44,12 +44,12 @@ repositories {
 
 ```
 
-Add DataCollector SDK dependency to the application's `build.gradle` file:
+Add DataCollector SDK dependency to the application's [build.gradle](https://bitbucket.org/dlocal-public/data-collector-sdk-android/src/master/app/build.gradle#lines-38) file:
 ```groovy
 
 dependencies {
     ...
-    implementation 'com.dlocal.android:data-collector:0.0.3'
+    implementation 'com.dlocal.android:data-collector:0.0.5'
     ...
 }
 
@@ -62,6 +62,9 @@ dependencies {
 Create an Application file if you haven't already and initialize the sdk calling setUp method and passing your API key:
 
 ```kotlin
+import com.dlocal.datacollector.DLCollector
+import com.dlocal.datacollector.api.DLSettings
+
 class MainApplication : Application() {
 
     override fun onCreate() {
@@ -75,6 +78,11 @@ class MainApplication : Application() {
 Optionally you can configure the environment and the desired log level in the attributes of the `DLSettings` object:
 
 ```kotlin
+import com.dlocal.datacollector.DLCollector
+import com.dlocal.datacollector.api.DLEnvironment
+import com.dlocal.datacollector.api.DLLogLevel
+import com.dlocal.datacollector.api.DLSettings
+
 class MainApplication : Application() {
 
     override fun onCreate() {
@@ -135,8 +143,8 @@ val settings = DLSettings(apiKey = "SBX API KEY", environment = DLEnvironment.SA
 And looking at the console, when startSession is run, we should see the following logs if everything is working:
 
 ```log
-I/DLDataCollector: Collected 57 data points in 646 milliseconds in SANDBOX
-I/DLDataCollector: POST success with sessionId 177eb063-bf2d-4247-8db2-66b87409419e in SANDBOX
+I/DLDataCollector [SANDBOX]: Collected 57 data points in 646 milliseconds
+I/DLDataCollector [SANDBOX]: POST success with sessionId 177eb063-bf2d-4247-8db2-66b87409419e
 ```
 
 ### Switching environments
