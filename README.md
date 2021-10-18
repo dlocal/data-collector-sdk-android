@@ -49,7 +49,7 @@ Add DataCollector SDK dependency to the application's [build.gradle](https://bit
 
 dependencies {
     ...
-    implementation 'com.dlocal.android:data-collector:0.0.7'
+    implementation 'com.dlocal.android:data-collector:0.1.0'
     ...
 }
 
