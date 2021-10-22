@@ -31,7 +31,7 @@ android.permission.ACCESS_NETWORK_STATE (Optional)
 
 ## Installation
 
-New releases of the DataCollector Android SDK are published via [Maven Repository](https://repo1.maven.org/maven2/com/dlocal/android/data-collector/).
+New releases of the DataCollector Android SDK are published via [Maven Repository](https://mvnrepository.com/artifact/com.dlocal.android/data-collector).
 The latest version is available via `mavenCentral()`.
 
 Add `mavenCentral()` to the project level [build.gradle](https://bitbucket.org/dlocal-public/data-collector-sdk-android/src/master/build.gradle#lines-5) file's repositories section, if you don't have it already:
@@ -49,7 +49,7 @@ Add DataCollector SDK dependency to the application's [build.gradle](https://bit
 
 dependencies {
     ...
-    implementation 'com.dlocal.android:data-collector:0.1.0'
+    implementation 'com.dlocal.android:data-collector:0.1.1'
     ...
 }
 
