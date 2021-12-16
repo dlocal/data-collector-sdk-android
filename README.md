@@ -6,14 +6,16 @@ identify devices. Lightweight library with only `134KB` AAR file size.
 ## Table of Contents
 
 1. [ Requirements ](#markdown-header-requirements)
-1. [ App permissions ](#markdown-header-app-permissions)
+2. [ App permissions ](#markdown-header-app-permissions)
 3. [ Installation ](#markdown-header-installation)
 4. [ How to use ](#markdown-header-how-to-use)
 5. [ Testing the integration ](#markdown-header-testing-the-integration)
     - [ Switching environments ](#markdown-header-switching-environments)
-7. [ Java Example ](#markdown-header-java-example)
-8. [ Sample App ](#markdown-header-sample-app)
-8. [ Report Issues ](#markdown-header-report-issues)
+6. [ Java Example ](#markdown-header-java-example)
+7. [ Sample App ](#markdown-header-sample-app)
+8. [ Cross-platform frameworks ](#markdown-header-cross-platform-frameworks)
+9. [ Report Issues ](#markdown-header-report-issues)
+10. [ License ](#markdown-header-license)
 
 ## Requirements
 
@@ -184,6 +186,13 @@ You can use the SDK from Java due to the interoperability between Java and Kotli
 
 In this repository there's a [sample app](https://bitbucket.org/dlocal-public/data-collector-sdk-android/src/master/app/) to showcase how to use the SDK, please refer to the code for more detailed examples.
 
+## Cross-platform frameworks
+This SDK can be included in any native app, we also made available the following plugins for cross-platform frameworks:
+
+- [ionic capacitor plugin](https://bitbucket.org/dlocal-public/dlocal-data-collector-capacitor-plugin/src/main/)
+
 ## Report Issues
 
 If you have a problem or find an issue with the SDK please contact us at [mobile-dev@dlocal.com](mailto:mobile-dev@dlocal.com).
+
+## [License](LICENSE)
