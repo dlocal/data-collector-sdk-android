@@ -14,7 +14,6 @@ identify devices. Lightweight library with only `134KB` AAR file size.
 7. [ Java Example ](#markdown-header-java-example)
 8. [ Sample App ](#markdown-header-sample-app)
 8. [ Report Issues ](#markdown-header-report-issues)
-9. [ License ](#markdown-header-license)
 
 ## Requirements
 
@@ -188,5 +187,3 @@ In this repository there's a [sample app](https://bitbucket.org/dlocal-public/da
 ## Report Issues
 
 If you have a problem or find an issue with the SDK please contact us at [mobile-dev@dlocal.com](mailto:mobile-dev@dlocal.com).
-
-## License
