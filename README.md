@@ -50,7 +50,7 @@ Add DataCollector SDK dependency to the application's [build.gradle](https://bit
 
 dependencies {
     ...
-    implementation 'com.dlocal.android:data-collector:0.1.2'
+    implementation 'com.dlocal.android:data-collector:1.0.0'
     ...
 }
 
@@ -109,14 +109,14 @@ Start session will gather device information, and generate a sessionId.
 This step can be done any time, but **it's recommended to call it as soon as a session is present in your application state.**:
 
 ```kotlin
-DLCollector.getInstance().startSession()
+DLCollector.startSession()
 ```
 
 You can also associate additional data related to each session to improve the fraud prevention score. The following example shows how to pass the user reference ID inside `DLAdditionalData` object.
 
 ```kotlin
 val additionalData = DLAdditionalData(userReference = "user-id")
-DLCollector.getInstance().startSession(additionalData)
+DLCollector.startSession(additionalData)
 ```
 
 > NOTE: This method runs in a background thread and doesn't block the main thread.
@@ -128,7 +128,7 @@ See the SampleApp [SampleActivity](https://bitbucket.org/dlocal-public/data-coll
 When the user starts the checkout transaction, gather the session id like so:
 
 ```kotlin
-val sessionId: String? = DLCollector.getInstance().getSessionId()
+val sessionId: String? = DLCollector.getSessionId()
 ```
 
 Submit this value in the payment request within the `additional_risk_data.device.event_uuid` parameter. The method can return null if a session is not available or an error occurred.

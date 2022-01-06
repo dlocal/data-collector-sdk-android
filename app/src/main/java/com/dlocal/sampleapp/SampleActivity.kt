@@ -10,7 +10,6 @@ import com.dlocal.sampleapp.databinding.ActivitySampleBinding
 class SampleActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivitySampleBinding
-    private val dlCollector = DLCollector.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,12 +27,12 @@ class SampleActivity : AppCompatActivity() {
 
     private fun startSession() {
         val additionalData = DLAdditionalData(userReference = "USER_REFERENCE_ID")
-        dlCollector.startSession(additionalData)
+        DLCollector.startSession(additionalData)
         binding.sessionIdText.text = getString(R.string.session_started)
     }
 
     private fun getSessionId() {
-        val sessionId = dlCollector.getSessionId() ?: getString(R.string.no_session_id)
+        val sessionId = DLCollector.getSessionId() ?: getString(R.string.no_session_id)
         binding.sessionIdText.text = sessionId
     }
 }

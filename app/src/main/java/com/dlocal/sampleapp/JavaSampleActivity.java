@@ -13,7 +13,6 @@ import com.dlocal.sampleapp.databinding.ActivityJavaSampleBinding;
 public class JavaSampleActivity extends AppCompatActivity {
 
     private ActivityJavaSampleBinding binding;
-    private final DLCollector dlCollector = DLCollector.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,12 +33,12 @@ public class JavaSampleActivity extends AppCompatActivity {
 
     private void startSession() {
         DLAdditionalData additionalData = new DLAdditionalData("USER_REFERENCE_ID");
-        dlCollector.startSession(additionalData);
+        DLCollector.startSession(additionalData);
         binding.sessionIdText.setText(getString(R.string.session_started));
     }
 
     private void getSessionId() {
-        String sessionId = dlCollector.getSessionId();
+        String sessionId = DLCollector.getSessionId();
         binding.sessionIdText.setText(sessionId != null ? sessionId : getString(R.string.no_session_id));
     }
 }
