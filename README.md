@@ -50,7 +50,7 @@ Add DataCollector SDK dependency to the application's [build.gradle](https://bit
 
 dependencies {
     ...
-    implementation 'com.dlocal.android:data-collector:1.0.0'
+    implementation 'com.dlocal.android:data-collector:1.0.1'
     ...
 }
 
@@ -190,7 +190,6 @@ In this repository there's a [sample app](https://bitbucket.org/dlocal-public/da
 This SDK can be included in any native app, we also made available the following plugins for cross-platform frameworks:
 
 - [ionic capacitor plugin](https://bitbucket.org/dlocal-public/dlocal-data-collector-capacitor-plugin/src/main/)
-- [ionic cordova plugin](https://bitbucket.org/dlocal-public/dlocal-data-collector-cordova-plugin/src/master/)
 
 ## Report Issues
 
