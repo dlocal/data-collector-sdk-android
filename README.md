@@ -5,17 +5,17 @@ identify devices. Lightweight library with only `134KB` AAR file size.
 
 ## Table of Contents
 
-1. [ Requirements ](#markdown-header-requirements)
-2. [ App permissions ](#markdown-header-app-permissions)
-3. [ Installation ](#markdown-header-installation)
-4. [ How to use ](#markdown-header-how-to-use)
-5. [ Testing the integration ](#markdown-header-testing-the-integration)
-    - [ Switching environments ](#markdown-header-switching-environments)
-6. [ Java Example ](#markdown-header-java-example)
-7. [ Sample App ](#markdown-header-sample-app)
-8. [ Cross-platform frameworks ](#markdown-header-cross-platform-frameworks)
-9. [ Report Issues ](#markdown-header-report-issues)
-10. [ License ](#markdown-header-license)
+1. [Requirements](#requirements)
+2. [App permissions](#app-permissions)
+3. [Installation](#installation)
+4. [How to use](#how-to-use)
+5. [Testing the integration](#testing-the-integration)
+    - [Switching environments](#switching-environments)
+6. [Java Example](#java-examples)
+7. [Sample App](#sample-app)
+8. [Cross-platform frameworks](#cross-platform-frameworks)
+9. [Report Issues](#report-issues)
+10. [License](#license)
 
 ## Requirements
 
@@ -35,7 +35,7 @@ android.permission.ACCESS_NETWORK_STATE (Optional)
 New releases of the DataCollector Android SDK are published via [Maven Repository](https://mvnrepository.com/artifact/com.dlocal.android/data-collector).
 The latest version is available via `mavenCentral()`.
 
-Add `mavenCentral()` to the project level [build.gradle](https://bitbucket.org/dlocal-public/data-collector-sdk-android/src/master/build.gradle#lines-5) file's repositories section, if you don't have it already:
+Add `mavenCentral()` to the project level [build.gradle](https://github.com/dlocal/data-collector-sdk-android/tree/master/build.gradle#L5) file's repositories section, if you don't have it already:
 ```groovy
 
 repositories {
@@ -45,12 +45,12 @@ repositories {
 
 ```
 
-Add DataCollector SDK dependency to the application's [build.gradle](https://bitbucket.org/dlocal-public/data-collector-sdk-android/src/master/app/build.gradle#lines-38) file:
+Add DataCollector SDK dependency to the application's [build.gradle](https://github.com/dlocal/data-collector-sdk-android/tree/master/app/build.gradle#L38) file:
 ```groovy
 
 dependencies {
     ...
-    implementation 'com.dlocal.android:data-collector:1.0.1'
+    implementation 'com.dlocal.android:data-collector:1.0.3'
     ...
 }
 
@@ -100,7 +100,7 @@ class MainApplication : Application() {
 ```
 Replacing `apiKey` with your key.
 
-See the [SampleApplication](https://bitbucket.org/dlocal-public/data-collector-sdk-android/src/master/app/src/main/java/com/dlocal/sampleapp/SampleApplication.kt) for a detailed example.
+See the [SampleApplication](https://github.com/dlocal/data-collector-sdk-android/tree/master/app/src/main/java/com/dlocal/sampleapp/SampleApplication.kt) for a detailed example.
 
 ### 2) Start Session
 
@@ -121,7 +121,7 @@ DLCollector.startSession(additionalData)
 
 > NOTE: This method runs in a background thread and doesn't block the main thread.
 
-See the SampleApp [SampleActivity](https://bitbucket.org/dlocal-public/data-collector-sdk-android/src/master/app/src/main/java/com/dlocal/sampleapp/SampleActivity.kt) for a detailed example.
+See the SampleApp [SampleActivity](https://github.com/dlocal/data-collector-sdk-android/tree/master/app/src/main/java/com/dlocal/sampleapp/SampleActivity.kt) for a detailed example.
 
 ### 3) Link the session to the transaction
 
@@ -176,23 +176,47 @@ Replacing the `apiKey` with yours for each environment.
 
 You can use the SDK from Java due to the interoperability between Java and Kotlin, checkout the sample app's Java examples.
 
-- [Set up - JavaSampleApplication](https://bitbucket.org/dlocal-public/data-collector-sdk-android/src/master/app/src/main/java/com/dlocal/sampleapp/JavaSampleApplication.java)
+- [Set up - JavaSampleApplication](https://github.com/dlocal/data-collector-sdk-android/tree/master/app/src/main/java/com/dlocal/sampleapp/JavaSampleApplication.java)
 
-- [Start session - JavaSampleActivity](https://bitbucket.org/dlocal-public/data-collector-sdk-android/src/master/app/src/main/java/com/dlocal/sampleapp/JavaSampleActivity.java#lines-34)
+- [Start session - JavaSampleActivity](https://github.com/dlocal/data-collector-sdk-android/tree/master/app/src/main/java/com/dlocal/sampleapp/JavaSampleActivity.java#L34)
 
-- [Get session ID - JavaSampleActivity](https://bitbucket.org/dlocal-public/data-collector-sdk-android/src/master/app/src/main/java/com/dlocal/sampleapp/JavaSampleActivity.java#lines-39)
+- [Get session ID - JavaSampleActivity](https://github.com/dlocal/data-collector-sdk-android/tree/master/app/src/main/java/com/dlocal/sampleapp/JavaSampleActivity.java#L40)
 
 ## Sample App
 
-In this repository there's a [sample app](https://bitbucket.org/dlocal-public/data-collector-sdk-android/src/master/app/) to showcase how to use the SDK, please refer to the code for more detailed examples.
+In this repository there's a [sample app](https://github.com/dlocal/data-collector-sdk-android/tree/master/app/) to showcase how to use the SDK, please refer to the code for more detailed examples.
 
 ## Cross-platform frameworks
 This SDK can be included in any native app, we also made available the following plugins for cross-platform frameworks:
 
-- [ionic capacitor plugin](https://bitbucket.org/dlocal-public/dlocal-data-collector-capacitor-plugin/src/main/)
+- [ionic capacitor plugin](https://github.com/dlocal/dlocal-data-collector-capacitor-plugin/)
 
 ## Report Issues
 
 If you have a problem or find an issue with the SDK please contact us at [mobile-dev@dlocal.com](mailto:mobile-dev@dlocal.com).
 
-## [License](LICENSE)
+## License
+
+```text
+    MIT License
+
+    Copyright (c) 2022 DLOCAL
+
+    Permission is hereby granted, free of charge, to any person obtaining a copy
+    of this software and associated documentation files (the "Software"), to deal
+    in the Software without restriction, including without limitation the rights
+    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+    copies of the Software, and to permit persons to whom the Software is
+    furnished to do so, subject to the following conditions:
+
+    The above copyright notice and this permission notice shall be included in all
+    copies or substantial portions of the Software.
+
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+    SOFTWARE.
+```
